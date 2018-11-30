@@ -28,6 +28,13 @@ endef
 TARGET_CFLAGS += \
 	-I$(LINUX_DIR)/user_headers/include
 
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/inc/*.h $(1)/usr/include/
+	$(CP) $(PKG_BUILD_DIR)/lib/*.so $(1)/usr/lib/
+endef
+
 define Package/rmnetctl/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/bin
