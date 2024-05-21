@@ -26,6 +26,7 @@ define Package/rmnetctl/Description
 endef
 
 TARGET_CFLAGS += -Werror -Wall\
+	-I$(STAGING_DIR)/usr/include/common \
 	-I$(LINUX_DIR)/user_headers/include
 
 define Build/InstallDev

@@ -14,6 +14,10 @@ endif
 
 include $(INCLUDE_DIR)/package.mk
 
+ifeq ($(CONFIG_LINUX_5_4),y)
+KCPPFLAGS := -DLINUX_5_4
+endif
+
 define KernelPackage/rmnet-core
   SECTION:=kernel
   CATEGORY:=Kernel modules
@@ -47,6 +51,7 @@ define Build/Compile
 	$(MAKE) -C "$(LINUX_DIR)" \
 		CROSS_COMPILE="$(TARGET_CROSS)" \
 		ARCH="$(LINUX_KARCH)" \
+		KCPPFLAGS="$(KCPPFLAGS)" \
 		M="$(PKG_BUILD_DIR)" \
 		modules
 endef
