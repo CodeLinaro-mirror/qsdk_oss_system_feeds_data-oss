@@ -48,7 +48,7 @@ define KernelPackage/rmnet-ctl/Description
 RMNET CTL module handles QMAP commands for flow control purposes
 endef
 define Build/Compile
-	$(MAKE) -C "$(LINUX_DIR)" \
+	$(KERNEL_MAKE) \
 		CROSS_COMPILE="$(TARGET_CROSS)" \
 		ARCH="$(LINUX_KARCH)" \
 		KCPPFLAGS="$(KCPPFLAGS)" \
