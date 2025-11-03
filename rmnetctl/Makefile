@@ -39,8 +39,10 @@ endef
 define Package/rmnetctl/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/etc/hotplug.d/net
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/lib/librmnetctl.so $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/bin/rmnetcli $(1)/usr/bin
+	$(INSTALL_DATA) ./files/01-qdisc $(1)/etc/hotplug.d/net/01-qdisc
 endef
 
 $(eval $(call BuildPackage,rmnetctl))
